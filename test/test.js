@@ -22,7 +22,7 @@ const App = () => {
       </button>
       <div
         className=${css`
-          https: ; //unpkg.com/tailwindcss@1.1.4/dist/tailwind.min.css
+          https://unpkg.com/tailwindcss@1.1.4/dist/tailwind.min.css
         `}
       >
         <h1 class="bg-blue-500">Hello from tailwind</h1>

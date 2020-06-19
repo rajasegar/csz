@@ -1,21 +1,29 @@
 import stylis from './stylis.js';
 
+// Cache object
 const cache = {};
+
+// Creating the Hash
 const hash = () =>
   Math.random()
     .toString(36)
     .replace('0.', '');
 
+// Adding internal stylesheet
 const sheet = document.createElement('style');
 document.head.appendChild(sheet);
 
+// Temporary ruleset to prevent FOUC
 const none = hash => `.${hash}{display:none}`;
 const hide = hash => (sheet.innerHTML = none(hash) + sheet.innerHTML);
 const show = hash =>
   (sheet.innerHTML = sheet.innerHTML.replace(none(hash), ''));
 
+// Utility to check external stylesheet
 const isExternalStyleSheet = key => /^(\/|https?:\/\/)/.test(key.trim());
 
+// Processing Engine
+// This is where stylis is used
 const process = key => hash => rules => {
   sheet.innerHTML += (cache[key] = {
     hash,
@@ -24,6 +32,8 @@ const process = key => hash => rules => {
   if (isExternalStyleSheet(key)) show(hash);
 };
 
+// Main default export function which returns the classnames
+// in the format csz-****
 export default (strings, ...values) => {
   const key = strings[0].startsWith('/')
     ? strings[0]

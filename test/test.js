@@ -1,5 +1,5 @@
 import { React, ReactDOM } from "https://unpkg.com/es-react";
-import css from "https://unpkg.com/csz";
+import css from "../index.js";
 import htm from "https://unpkg.com/htm?module";
 const html = htm.bind(React.createElement);
 

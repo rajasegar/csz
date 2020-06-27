@@ -1,6 +1,8 @@
 import stylis from './stylis.js';
 
-// Cache object
+// Cache object to store dynamically fetched stylesheets
+// If you are fetching /index.css for the second time
+// it will return from the cache instead of processing
 const cache = {};
 
 // Creating the Hash
@@ -35,6 +37,7 @@ const process = key => hash => rules => {
 // Main default export function which returns the classnames
 // in the format csz-****
 export default (strings, ...values) => {
+
   const key = strings[0].startsWith('/')
     ? strings[0]
     : strings.reduce(

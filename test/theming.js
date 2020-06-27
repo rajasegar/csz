@@ -4,10 +4,11 @@ import htm from "https://unpkg.com/htm?module";
 const html = htm.bind(React.createElement);
 
 const Button = (props) => {
-
   const defaultTheme = {
     main: 'palevioletred'
   };
+
+  props.theme = props.theme || defaultTheme;
 
   return html`
     <button
@@ -16,9 +17,9 @@ const Button = (props) => {
         margin: 1em;
         padding: 0.25em 1em;
         border-radius: 3px;
-  background: white;
-        color: ${props.theme ? props.theme.main : defaultTheme.main};
-        border: 2px solid ${props.theme ? props.theme.main : defaultTheme.main};
+        background: white;
+        color: ${props.theme.main};
+        border: 2px solid ${props.theme.main};
       `}
     >
       ${props.children}
@@ -31,12 +32,7 @@ const App = () => {
     main: "mediumseagreen"
   };
   return html`
-    <div
-      className=${css`
-        font-size: 1.5em;
-        text-align: center;
-      `}
-    >
+    <div className=${css`font-size: 1.5em;text-align: center;`}>
       <${Button}>Normal<//>
       <${Button} theme=${theme}>Primary<//>
     </div>

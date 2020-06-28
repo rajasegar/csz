@@ -4,20 +4,20 @@ import htm from "https://unpkg.com/htm?module";
 const html = htm.bind(React.createElement);
 
 const App = () => {
+  const styles = {
+    wrapper: css`
+      font-size: 1.5em;
+      text-align: center;
+      color: palevioletred;
+      h1 {
+        padding: 4em;
+        background: papayawhip;
+      }`
+  };
   return html`
     <div
-      className=${css`
-        font-size: 1.5em;
-        text-align: center;
-        color: palevioletred;
-      `}
-    >
-      <h1
-        className=${css`
-          padding: 4em;
-          background: papayawhip;
-        `}
-      >
+      className=${styles.wrapper}>
+      <h1>
         Hello World!
       </h1>
     </div>

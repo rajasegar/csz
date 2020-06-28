@@ -7,9 +7,7 @@ const Button = (props) => {
   const defaultTheme = {
     main: 'palevioletred'
   };
-
-  props.theme = props.theme || defaultTheme;
-
+  const theme = props.theme || defaultTheme;
   return html`
     <button
       className=${css`
@@ -18,8 +16,8 @@ const Button = (props) => {
         padding: 0.25em 1em;
         border-radius: 3px;
         background: white;
-        color: ${props.theme.main};
-        border: 2px solid ${props.theme.main};
+        color: ${theme.main};
+        border: 2px solid ${theme.main};
       `}
     >
       ${props.children}
@@ -32,7 +30,10 @@ const App = () => {
     main: "mediumseagreen"
   };
   return html`
-    <div className=${css`font-size: 1.5em;text-align: center;`}>
+    <div className=${css`
+    font-size: 1.5em;
+    text-align: center;`
+    }>
       <${Button}>Normal<//>
       <${Button} theme=${theme}>Primary<//>
     </div>
